@@ -1,0 +1,184 @@
+echo "# blankspace" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jjones3722/blankspace.git
+git push -u origin main
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Resume content hidden initially -->
+        <div class="resume">
+            <h1>Abby Blank</h1>
+            <h2>Senior Graphic Designer & Art Director</h2>
+            <div class="section" id="contact">
+                <h3>Contact Information</h3>
+                <p>Email: abbyblankdesigns@gmail.com</p>
+                <p>Phone: (917) 887-2975</p>
+            </div>
+            <div class="section" id="summary">
+                <h3>Professional Summary</h3>
+                <div class="summary">
+Art Director and Sr. Graphic Designer with 17+ years of experience with a $9 Billion, Fortune 500 company. Delivered a 20% increase in cultural engagement and 25% improvement in campaign performance for high-profile, public-facing design work. Visionary creative and leader of cross-functional teams, and strengthener of client relationships through every project stage. Seeking next professional challenge as a Sr. Graphic Designer or Art Director. 
+            </div>
+            <div class="section" id="experience">
+                <h3>Work Experience</h3>
+                <div class="experience">
+                    <h4>Sr. Graphic Designer at SiriusXM, Sept. 2006 – June 2024 New York, NY</h4>
+                    <p>
+•	Achieved a 20% increase in cultural engagement through 360-degree diversity and inclusion initiatives, including impactful campaigns for Women’s History Month and Hispanic Heritage Month.
+•	Boosted campaign performance by 25% through the creation of web banners, social media graphics, and email campaigns as part of enhanced digital outreach efforts.
+•	Improved project execution by collaborating with cross-functional teams to optimize processes and outcomes.
+•	Enhanced brand visibility and consistency by designing key visual elements for three exclusive subscriber events, working closely with artists and brand teams.
+•	Drove SiriusXM’s major creative rebrand campaign and the 2024 holiday season designs, actively shaping and communicating the brand’s new proposition.</p>
+<p>Developed and maintained web applications...</p>
+<p>Developed and maintained web applications...</p>
+<p>Developed and maintained web applications...</p>
+
+                </div>
+                <div class="experience">
+                    <h4>Junior Developer at ABC Inc</h4>
+                    <p>Assisted in developing new features and fixing bugs...</p>
+                </div>
+                <div class="experience">
+                    <h4>Intern at DEF Ltd</h4>
+                    <p>Supported senior developers in various tasks...</p>
+                </div>
+                <div class="experience">
+                    <h4>Freelance Web Developer</h4>
+                    <p>Worked on several client projects including websites and web apps...</p>
+                </div>
+            </div>
+            <div class="section" id="education">
+                <h3>Education</h3>
+                <p>Bachelor's Degree in Computer Science</p>
+                <p>University of ABC</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Background color of the page */
+    color: #fff; /* Text color */
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease, transform 1s ease;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Optional: Shadow effect */
+}
+
+.resume.reveal {
+    opacity: 1; /* Fully visible when mouse is moved */
+    transform: scale(1); /* Optional: scale effect */
+}
+
+h1, h2, h3, h4 {
+    margin: 0; /* Remove margins from headings */
+}
+
+.section {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease; /* Smooth transition */
+}
+
+.section.reveal {
+    opacity: 1; /* Fully visible when mouse is moved */
+}
+
+.experience {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease; /* Smooth transition */
+}
+
+.experience.reveal {
+    opacity: 1; /* Fully visible when mouse is moved */
+}
+
+// script.js
+
+document.addEventListener('mousemove', function() {
+    const resume = document.querySelector('.resume');
+    const sections = document.querySelectorAll('.section');
+    const experiences = document.querySelectorAll('.experience');
+
+    resume.classList.add('reveal'); // Reveal the resume container
+
+    sections.forEach(function(section) {
+        section.classList.add('reveal'); // Reveal each section
+    });
+
+    experiences.forEach(function(experience) {
+        experience.classList.add('reveal'); // Reveal each experience
+    });
+});
+
+// Optional: Hide content after mouse stops moving
+let timer;
+document.addEventListener('mousemove', function() {
+    const resume = document.querySelector('.resume');
+    const sections = document.querySelectorAll('.section');
+    const experiences = document.querySelectorAll('.experience');
+
+    clearTimeout(timer);
+    resume.classList.add('reveal');
+    sections.forEach(function(section) {
+        section.classList.add('reveal');
+    });
+    experiences.forEach(function(experience) {
+        experience.classList.add('reveal');
+    });
+
+    timer = setTimeout(function() {
+        resume.classList.remove('reveal');
+        sections.forEach(function(section) {
+            section.classList.remove('reveal');
+        });
+        experiences.forEach(function(experience) {
+            experience.classList.remove('reveal');
+        });
+    }, 1000); // Hide content after 1 second of inactivity
+});
